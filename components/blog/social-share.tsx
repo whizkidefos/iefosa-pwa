@@ -82,9 +82,11 @@ export function SocialShare({ title, url }: SocialShareProps) {
                 if (platform.name === 'Instagram') {
                   // Try to open Instagram app first, if fails open website
                   window.location.href = platform.url;
-                  setTimeout(() => {
-                    window.location.href = platform.fallbackUrl;
-                  }, 500);
+                  if (platform.fallbackUrl) {
+                    setTimeout(() => {
+                      window.location.href = platform.fallbackUrl as string;
+                    }, 500);
+                  }
                 } else {
                   window.open(platform.url, '_blank');
                 }
