@@ -17,7 +17,7 @@ export function AboutHero() {
           <div className="absolute inset-[3px] rounded-full bg-background" />
           <div className="absolute inset-[6px] rounded-full overflow-hidden">
             <Image
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d"
+              src="/efosa_igbinehi.webp"
               alt="Profile"
               width={192}
               height={192}
