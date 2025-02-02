@@ -32,26 +32,26 @@ export default function ContactPage() {
               
               <div>
                 <h4 className="font-semibold mb-2">Email</h4>
-                <a href="mailto:hello@example.com" className="text-primary hover:underline">
-                  hello@example.com
+                <a href="mailto:me@iefosa.me" className="text-primary hover:underline">
+                  me@iefosa.me
                 </a>
               </div>
               
               <div>
                 <h4 className="font-semibold mb-2">Location</h4>
-                <p className="text-muted-foreground">San Francisco, CA</p>
+                <p className="text-muted-foreground">Manchester, UK</p>
               </div>
               
               <div>
                 <h4 className="font-semibold mb-2">Social</h4>
                 <div className="flex space-x-4">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <a href="https://github.com/whizkidefos" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                     GitHub
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <a href="https://www.linkedin.com/in/efosaigbinehi/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                     LinkedIn
                   </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
+                  <a href="https://twitter.com/whizkidefos" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors">
                     Twitter
                   </a>
                 </div>

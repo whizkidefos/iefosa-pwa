@@ -6,6 +6,8 @@ import Navigation from '@/components/navigation';
 import { Toaster } from '@/components/ui/sonner';
 import { ScrollIndicator } from '@/components/ui/scroll-indicator';
 
+import { Analytics } from "@vercel/analytics/react"
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -35,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
+        <Analytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

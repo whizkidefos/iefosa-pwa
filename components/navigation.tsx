@@ -27,7 +27,7 @@ export default function Navigation() {
   if (!mounted) return null;
 
   return (
-    <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-sm border-b py-4">
+    <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-sm border-b py-3">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <Link href="/" className="flex items-center space-x-2 group">
