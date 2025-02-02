@@ -1,6 +1,6 @@
 import { BlogPost } from '@/components/sections/blog-post';
 import Footer from '@/components/sections/footer';
-import { blogPosts } from '@/lib/blog-data.tsx';
+import { blogPosts } from '@/lib/blog-data';
 import { notFound } from 'next/navigation';
 
 export function generateStaticParams() {

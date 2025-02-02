@@ -8,17 +8,17 @@ const socialLinks = [
   {
     name: 'GitHub',
     icon: Github,
-    href: 'https://github.com/efosa',
+    href: 'https://github.com/whizkidefos',
   },
   {
     name: 'LinkedIn',
     icon: Linkedin,
-    href: 'https://linkedin.com/in/efosa',
+    href: 'https://www.linkedin.com/in/efosaigbinehi/',
   },
   {
     name: 'Twitter',
     icon: Twitter,
-    href: 'https://twitter.com/efosa',
+    href: 'https://twitter.com/whizkidefos',
   },
   {
     name: 'Email',

@@ -22,7 +22,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Efosa. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Efosa Igbinehi. All rights reserved.</p>
         </div>
       </div>
     </footer>
