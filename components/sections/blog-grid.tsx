@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BlogCard } from '@/components/ui/blog-card';
-import { blogPosts } from '@/lib/blog-data.tsx';
+import { blogPosts } from '@/lib/blog-data';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
