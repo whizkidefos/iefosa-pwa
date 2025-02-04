@@ -15,11 +15,11 @@ const projects = [
     link: '#',
   },
   {
-    title: 'Cloud Optimization Platform',
-    description: 'ML-powered platform for optimizing cloud resource allocation and costs',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa',
-    tags: ['TypeScript', 'Next.js', 'AWS', 'Terraform'],
-    link: '#',
+    title: 'Volkmann Express',
+    description: 'Innovative enterprise solutions that empower businesses to thrive in the digital era through cutting-edge technology',
+    image: '/project-screenshots/volkmannexpress.png',
+    tags: ['TypeScript', 'Next.js', 'Azure', 'Terraform', 'Tailwind CSS'],
+    link: 'https://volkmannexpress-delta.vercel.app/',
   },
   {
     title: 'MLOps Pipeline',

@@ -6,19 +6,19 @@ import { TechCard } from '@/components/ui/tech-card';
 const technologies = [
   {
     category: "Languages",
-    items: ["Python", "TypeScript", "Rust", "Go"]
+    items: ["Python", "TypeScript", "PHP", "C#", "JavaScript", "Dart"]
   },
   {
     category: "AI/ML",
-    items: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face"]
+    items: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face", "FastAPI", "Streamlit"]
   },
   {
-    category: "Web",
-    items: ["React", "Next.js", "Node.js", "GraphQL"]
+    category: "Web/Mobile",
+    items: ["React", "Next.js", "Node.js", "Symfony", 'Django', 'Flask', 'Laravel', 'Flutter', 'React Native']
   },
   {
     category: "Cloud",
-    items: ["AWS", "GCP", "Docker", "Kubernetes"]
+    items: ["AWS", "GCP", "Docker", "Azure"]
   }
 ];
 

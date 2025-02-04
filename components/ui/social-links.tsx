@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Linkedin, Mail, X, GitBranch } from 'lucide-react';
 import { Button } from './button';
 
 const socialLinks = [
   {
     name: 'GitHub',
-    icon: Github,
+    icon: GitBranch,
     href: 'https://github.com/whizkidefos',
   },
   {
@@ -17,13 +17,13 @@ const socialLinks = [
   },
   {
     name: 'Twitter',
-    icon: Twitter,
+    icon: X,
     href: 'https://twitter.com/whizkidefos',
   },
   {
     name: 'Email',
     icon: Mail,
-    href: 'mailto:hello@efosa.dev',
+    href: 'mailto:me@iefosa.me',
   },
 ];
 

@@ -51,6 +51,7 @@ export function ProjectCard({ title, description, image, tags, link }: ProjectCa
           <a
             href={link}
             className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
+            target="_blank"
           >
             View Project
             <ArrowUpRight className="ml-1 h-4 w-4" />
