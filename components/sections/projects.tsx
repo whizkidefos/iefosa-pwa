@@ -2,28 +2,29 @@
 
 import { motion } from 'framer-motion';
 import { ProjectCard } from '@/components/ui/project-card';
+import { Type } from 'lucide-react';
 
 const projects = [
   {
-    title: 'AI Image Generator',
-    description: 'A deep learning model that generates unique images from text descriptions',
-    image: 'https://images.unsplash.com/photo-1547954575-855750c57bd3',
-    tags: ['Python', 'PyTorch', 'React', 'AWS'],
-    link: '#',
+    title: 'ABAP Code Analyzer',
+    description: 'Analyze and improve your ABAP code quality with S/4HANA best practices',
+    image: '/project-screenshots/abap-code-analyzer.png',
+    tags: ['Python', 'PyTorch', 'React', 'AWS', 'TypeScript'],
+    link: 'https://abap-analyzer.vercel.app/',
   },
   {
     title: 'Cloud Optimization Platform',
     description: 'Platform for optimizing cloud resource allocation and costs',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa',
+    image: '/project-screenshots/cloud-optimize.jpeg',
     tags: ['TypeScript', 'Next.js', 'AWS', 'Terraform'],
-    link: '#',
+    link: 'https://cloud-optimisation-platform.vercel.app/',
   },
   {
-    title: 'MLOps Pipeline',
-    description: 'Automated ML model training and deployment pipeline',
-    image: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a',
-    tags: ['Python', 'Docker', 'Kubernetes', 'CI/CD'],
-    link: '#',
+    title: 'ML Model Analytics',
+    description: 'A real-time dashboard for monitoring and visualizing machine learning model performance metrics.',
+    image: '/project-screenshots/ml-metrics.jpeg',
+    tags: ['Python', 'Docker', 'Tensorflow', 'CI/CD', 'React'],
+    link: 'https://ml-model-analytics.vercel.app/',
   },
 ];
 

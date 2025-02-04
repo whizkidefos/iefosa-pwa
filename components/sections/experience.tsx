@@ -7,25 +7,33 @@ import { Timeline } from '@/components/ui/timeline';
 const experiences = [
   {
     title: 'Senior AI Engineer',
-    company: 'TechCorp',
+    company: 'Freelance',
     period: '2022 - Present',
     description: 'Leading AI initiatives and developing cutting-edge ML solutions',
     technologies: ['PyTorch', 'TensorFlow', 'AWS', 'Docker'],
   },
   {
-    title: 'Machine Learning Engineer',
-    company: 'DataTech Solutions',
+    title: 'Software Engineer',
+    company: 'Electric Circus Digital',
     period: '2020 - 2022',
-    description: 'Developed and deployed production-ready ML models',
-    technologies: ['Python', 'Scikit-learn', 'Kubernetes', 'MLflow'],
+    description: 'Developed and deployed production-ready ML models and backend services',
+    technologies: ['Python', 'PHP', 'WordPress', 'Laravel', 'Scikit-learn', 'Kubernetes', 'MLflow'],
   },
   {
     title: 'Software Engineer',
-    company: 'Innovation Labs',
+    company: 'Makkie Communications Labs, Vignola',
     period: '2018 - 2020',
-    description: 'Full-stack development with focus on AI integration',
-    technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis'],
+    description: 'Full-stack development with focus on AI integration and API development',
+    technologies: ['React', 'Node.js', 'Node', 'PostgreSQL', 'Redis', 'Django', 'Flask', 'Scikit-learn'],
   },
+  {
+    'title': 'Webmaster, Graphics and Web Designer',
+    'company': 'Pagine Gialle | Yellow Pages',
+    'period': '2015 - 2018',
+    'description': 'Designed and developed websites and graphics for over 60 clients',
+    'technologies': ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'jQuery', 'Photoshop', 'Illustrator', 'InDesign'],
+
+  }
 ];
 
 export default function Experience() {

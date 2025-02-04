@@ -7,19 +7,19 @@ const journeyData = [
   {
     year: "2024",
     title: "Senior AI Engineer",
-    company: "TechCorp",
+    company: "Volkmann Express",
     description: "Leading AI initiatives and developing cutting-edge ML solutions"
   },
   {
     year: "2022",
-    title: "Machine Learning Engineer",
-    company: "DataTech Solutions",
-    description: "Developed and deployed production-ready ML models"
+    title: "Software Engineer",
+    company: "Zaizi",
+    description: "Developed and deployed production-ready ML models and interactive user interfaces"
   },
   {
     year: "2020",
-    title: "Software Engineer",
-    company: "Innovation Labs",
+    title: "Senior Developer",
+    company: "Electric Circus Digital",
     description: "Full-stack development with focus on AI integration"
   }
 ];
