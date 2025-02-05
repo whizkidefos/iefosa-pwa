@@ -78,11 +78,11 @@ const projects = [
     link: '#',
   },
   {
-    title: 'Federated Learning Platform',
-    description: 'Distributed machine learning system that preserves data privacy across organizations',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31',
-    tags: ['Python', 'TensorFlow Federated', 'gRPC', 'Kubernetes'],
-    link: '#',
+    title: 'Weather Dashboard',
+    description: 'A beautiful and feature-rich weather dashboard application with detailed forecasts, beautiful visualizations, and comprehensive city details.',
+    image: '/project-screenshots/weather-dashboard.png',
+    tags: ['React', 'Zustand', 'Recharts', 'OpenWeather API', 'REST Countries API', 'Tailwind CSS'],
+    link: 'https://world-weather-app-lemon.vercel.app/',
   },
   {
     title: 'Blockchain Edu Platform',
