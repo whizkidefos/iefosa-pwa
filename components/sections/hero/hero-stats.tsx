@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const stats = [
   { label: 'Years Experience', value: '10+' },
   { label: 'Projects Completed', value: '100+' },
-  { label: 'Technologies', value: '20+' },
+  { label: 'Technologies', value: '30+' },
 ];
 
 export function HeroStats() {
@@ -14,7 +14,7 @@ export function HeroStats() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.6 }}
-      className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-16"
+      className="grid md:grid-cols-3 sm:grid-cols-1 gap-8 mt-16"
     >
       {stats.map((stat) => (
         <div key={stat.label} className="text-center">
