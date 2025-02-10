@@ -88,8 +88,8 @@ const projects = [
     title: 'Blockchain Edu Platform',
     description: 'Educational platform for learning blockchain development and smart contract programming',
     image: '/project-screenshots/blockchain-edu-platform.png',
-    tags: ['Python', 'Transformers', 'FastAPI', 'Vue.js'],
-    link: '#',
+    tags: ['Python', 'TypeScript', 'FastAPI', 'React', 'Tailwind CSS', 'Web3.js'],
+    link: 'https://blockchain-edu.vercel.app/',
   },
 ];
 
