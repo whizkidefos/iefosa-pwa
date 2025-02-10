@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 const navItems = [
   { name: 'Home', href: '/' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Projects', href: '/projects' },
+  { name: 'Experience', href: '/about' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export function FooterNav() {
