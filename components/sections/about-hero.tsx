@@ -42,14 +42,10 @@ export function AboutHero() {
           className="max-w-2xl mx-auto space-y-6 text-lg text-muted-foreground"
         >
           <p>
-            I'm a passionate AI Engineer and Full Stack Developer with over 5 years of experience
-            in building intelligent solutions. My journey in tech started with traditional software
-            development and evolved into specializing in artificial intelligence and machine learning.
+            I'm a passionate AI Engineer and Full Stack Developer with over 10 years of experience building intelligent solutions. My journey in tech started with traditional software development and evolved into specializing in artificial intelligence and machine learning.
           </p>
           <p>
-            Currently focused on developing AI-powered applications that solve real-world problems,
-            I combine my expertise in both software engineering and machine learning to create
-            scalable, efficient solutions.
+            I am currently focused on developing AI-powered applications that solve real-world problems. I combine my expertise in software engineering and machine learning to create scalable, efficient solutions.
           </p>
         </motion.div>
       </div>
