@@ -21,6 +21,24 @@ const journeyData = [
     title: "Senior Developer",
     company: "Electric Circus Digital",
     description: "Full-stack development with focus on AI integration"
+  },
+  {
+    year: "2018",
+    title: "Frontend Developer",
+    company: "Makkie, Vignola",
+    description: "Developed responsive websites and web applications"
+  },
+  {
+    year: "2015",
+    title: "Webmaster, Web Designer",
+    company: "Pagine Gialle (Italiaonline), Bologna",
+    description: "Managed and designed websites for local businesses"
+  },
+  {
+    year: "2014",
+    title: "Junior Developer, Intern",
+    company: "Evolve Web Agency, Modena",
+    description: "Started my career as a junior developer building web applications"
   }
 ];
 
