@@ -13,7 +13,8 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Efosa - AI Software Engineer',
   description: 'Portfolio of Efosa - AI Software Engineer specializing in modern web technologies and artificial intelligence.',
-  keywords: ['AI Engineer', 'Software Developer', 'Web Development', 'Machine Learning', 'Portfolio', 'Mobile Development', 'Serverless', 'Security Analyst'],
+  keywords: ['AI Engineer', 'Software Developer', 'Web Development', 'Machine Learning', 'Portfolio', 'Mobile Development', 'Serverless', 'Security Analyst', 'Efosa', 'Backend Developer', 'Frontend Developer', 'Fullstack Developer'],
+  icons: ['https://iefosa.me/icon.svg'],
   authors: [{ name: 'Efosa' }],
   openGraph: {
     type: 'website',
