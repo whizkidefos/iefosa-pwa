@@ -8,11 +8,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const projects = [
   {
-    title: 'ML Model Analytics',
-    description: 'A real-time dashboard for monitoring and visualizing machine learning model performance metrics.',
-    image: '/project-screenshots/ml-metrics.jpeg',
-    tags: ['Python', 'Docker', 'Tensorflow', 'CI/CD', 'React'],
-    link: 'https://ml-model-analytics.vercel.app/',
+    title: 'Saxon Bulletin',
+    description: 'A modern news platform for the Saxon community with real-time updates and interactive features',
+    image: '/project-screenshots/saxon-bulletin.png',
+    tags: ['PHP', 'MySQL', 'TailwindCSS', 'AlpineJS', 'JavaScript', 'HTML', 'WordPress'],
+    link: 'https://saxonbulletin.com/',
   },
   {
     title: 'Volkmann Express',
@@ -39,7 +39,7 @@ const projects = [
     title: 'NLP Document Processor',
     description: 'Advanced natural language processing system for document analysis and extraction',
     image: '/project-screenshots/nlp-processor.png',
-    tags: ['Python', 'SpaCy', 'FastAPI', 'MongoDB'],
+    tags: ['Python', 'SpaCy', 'FastAPI', 'MongoDB', 'React', 'Tailwind CSS'],
     link: 'https://nlp-document-processor.vercel.app/',
   },
   {
@@ -48,6 +48,13 @@ const projects = [
     image: '/project-screenshots/blockchain-analytics-dashboard.jpeg',
     tags: ['Python', 'GraphQL', 'Web3.js', 'PostgreSQL', 'React'],
     link: 'https://blockchain-analytics-dashboard-iota.vercel.app/',
+  },
+  {
+    title: 'ML Model Analytics',
+    description: 'A real-time dashboard for monitoring and visualizing machine learning model performance metrics.',
+    image: '/project-screenshots/ml-metrics.jpeg',
+    tags: ['Python', 'Docker', 'Tensorflow', 'CI/CD', 'React'],
+    link: 'https://ml-model-analytics.vercel.app/',
   },
   {
     title: 'ABAP Code Analyzer',

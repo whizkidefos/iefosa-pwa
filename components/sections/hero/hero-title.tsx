@@ -11,7 +11,7 @@ export function HeroTitle() {
       transition={{ duration: 0.6 }}
       className="text-center"
     >
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 mt-8">
         Hi, I'm <GradientText>Efosa</GradientText>
       </h1>
       <p className="text-xl md:text-2xl text-muted-foreground">
