@@ -3,22 +3,56 @@
 import { motion } from 'framer-motion';
 import { TechCard } from '@/components/ui/tech-card';
 
+interface TechItem {
+  name: string;
+  icon?: string;
+}
+
 const technologies = [
   {
     category: "Languages",
-    items: ["Python", "TypeScript", "PHP", "C#", "JavaScript", "Dart"]
+    items: [
+      { name: "Python", icon: "FileCode", color: "#3776AB" },
+      { name: "TypeScript", icon: "FileType", color: "#3178C6" },
+      { name: "PHP", icon: "FileCode2", color: "#777BB4" },
+      { name: "C#", icon: "Hash", color: "#239120" },
+      { name: "JavaScript", icon: "FileJson", color: "#F7DF1E" },
+      { name: "Dart", icon: "Target", color: "#0175C2" }
+    ]
   },
   {
     category: "AI/ML",
-    items: ["PyTorch", "TensorFlow", "Scikit-learn", "Hugging Face", "FastAPI", "Streamlit"]
+    items: [
+      { name: "PyTorch", icon: "Flame", color: "#EE4C2C" },
+      { name: "TensorFlow", icon: "Network", color: "#FF6F00" },
+      { name: "Scikit-learn", icon: "Microscope", color: "#F89939" },
+      { name: "Hugging Face", icon: "Bot", color: "#FFD21E" },
+      { name: "FastAPI", icon: "Zap", color: "#009688" },
+      { name: "Streamlit", icon: "BarChart", color: "#FF4B4B" }
+    ]
   },
   {
     category: "Web/Mobile",
-    items: ["React", "Next.js", "Node.js", "Symfony", 'Django', 'Flask', 'Laravel', 'Flutter', 'React Native']
+    items: [
+      { name: "React", icon: "Atom", color: "#61DAFB" },
+      { name: "Next.js", icon: "CornerRightDown", color: "#000000" },
+      { name: "Node.js", icon: "Server", color: "#339933" },
+      { name: "Symfony", icon: "Infinity", color: "#000000" },
+      { name: "Django", icon: "Layers", color: "#092E20" },
+      { name: "Flask", icon: "Beaker", color: "#000000" },
+      { name: "Laravel", icon: "Hexagon", color: "#FF2D20" },
+      { name: "Flutter", icon: "Smartphone", color: "#02569B" },
+      { name: "React Native", icon: "Smartphone", color: "#61DAFB" }
+    ]
   },
   {
     category: "Cloud",
-    items: ["AWS", "GCP", "Docker", "Azure"]
+    items: [
+      { name: "AWS", icon: "Cloud", color: "#FF9900" },
+      { name: "GCP", icon: "CloudCog", color: "#4285F4" },
+      { name: "Docker", icon: "Container", color: "#2496ED" },
+      { name: "Azure", icon: "CloudSun", color: "#0078D4" }
+    ]
   }
 ];
 

@@ -23,7 +23,7 @@ export default function Footer() {
         </div>
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Efosa Igbinehi. All rights reserved.</p>
-          <small className='text-xs text-muted-foreground'>Code n Jazz is poetry.</small>
+          <small className='text-xs inline-block bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500 bg-clip-text text-transparent font-medium'>Code n Jazz is poetry.</small>
         </div>
       </div>
     </footer>
