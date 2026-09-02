@@ -1,16 +1,14 @@
 import { BlogPost } from '@/components/sections/blog-post';
 import Footer from '@/components/sections/footer';
-import { blogPosts } from '@/lib/blog-data';
+import { getPostBySlug } from '@/lib/firebase/admin-services';
 import { notFound } from 'next/navigation';
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
-  }));
+interface BlogPostPageProps {
+  params: { slug: string };
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find(post => post.slug === params.slug);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     notFound();

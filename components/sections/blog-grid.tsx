@@ -1,21 +1,38 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BlogCard } from '@/components/ui/blog-card';
-import { blogPosts } from '@/lib/blog-data';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { getPublishedPosts } from '@/lib/firebase/client-services';
+import type { Post } from '@/lib/types';
 
 const POSTS_PER_PAGE = 6;
 
 export function BlogGrid() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
-  
+
+  useEffect(() => {
+    getPublishedPosts()
+      .then(setPosts)
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const startIndex = (currentPage - 1) * POSTS_PER_PAGE;
-  const endIndex = startIndex + POSTS_PER_PAGE;
-  const currentPosts = blogPosts.slice(startIndex, endIndex);
+  const currentPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
+
+  if (loading) {
+    return (
+      <section className="py-20 px-4 flex justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 px-4">
@@ -44,7 +61,7 @@ export function BlogGrid() {
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
-            
+
             <div className="flex items-center gap-2">
               {[...Array(totalPages)].map((_, index) => (
                 <Button

@@ -3,11 +3,12 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { format } from 'date-fns';
-import { BlogPost as BlogPostType } from '@/lib/blog-data';
+import type { Post } from '@/lib/types';
 import { SocialShare } from '@/components/blog/social-share';
+import { ReactionButtons } from '@/components/blog/reaction-buttons';
 
 interface BlogPostProps {
-  post: BlogPostType;
+  post: Post;
 }
 
 export function BlogPost({ post }: BlogPostProps) {
@@ -37,7 +38,7 @@ export function BlogPost({ post }: BlogPostProps) {
           </div>
 
           <h1 className="text-4xl md:text-5xl font-bold">{post.title}</h1>
-          
+
           <div className="flex gap-2">
             {post.tags.map(tag => (
               <span
@@ -50,16 +51,21 @@ export function BlogPost({ post }: BlogPostProps) {
           </div>
         </div>
 
+        <div className="mt-4">
+          <ReactionButtons postId={post.slug} />
+        </div>
+
         <div className="mt-8 mb-12">
-          <SocialShare 
-            title={post.title} 
+          <SocialShare
+            title={post.title}
             url={typeof window !== 'undefined' ? window.location.href : ''}
           />
         </div>
 
-        <div className="mt-12 prose prose-lg dark:prose-invert max-w-none">
-          {post.content}
-        </div>
+        <div
+          className="mt-12 prose prose-lg dark:prose-invert max-w-none"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
       </motion.div>
     </article>
   );

@@ -1,114 +1,38 @@
 "use client";
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ProjectCard } from '@/components/ui/project-card';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-const projects = [
-  {
-    title: 'Saxon Bulletin',
-    description: 'A modern news platform for the Saxon community with real-time updates and interactive features',
-    image: '/project-screenshots/saxon-bulletin.png',
-    tags: ['PHP', 'MySQL', 'TailwindCSS', 'AlpineJS', 'JavaScript', 'HTML', 'WordPress'],
-    link: 'https://saxonbulletin.com/',
-  },
-  {
-    title: 'Volkmann Express',
-    description: 'Innovative enterprise solutions that empower businesses to thrive in the digital era through cutting-edge technology',
-    image: '/project-screenshots/volkmannexpress.png',
-    tags: ['TypeScript', 'Next.js', 'Azure', 'Terraform', 'Tailwind CSS'],
-    link: 'https://volkmannexpress-delta.vercel.app/',
-  },
-  {
-    title: 'MLOps Pipeline',
-    description: 'Automated ML model training and deployment pipeline with monitoring',
-    image: '/project-screenshots/mlops-pipeline.png',
-    tags: ['Python', 'Docker', 'React', 'CI/CD', 'TensorFlow'],
-    link: 'https://ml-pipeline-tensorflow.vercel.app/',
-  },
-  {
-    title: 'Malichis Group',
-    description: 'From property management to community development, we\'re committed to excellence in everything we do.',
-    image: '/project-screenshots/malichis-group.png',
-    tags: ['React', 'Next.js', 'Node.js', 'Redis', 'Tailwind CSS'],
-    link: 'https://www.malichisgroup.com/',
-  },
-  {
-    title: 'NLP Document Processor',
-    description: 'Advanced natural language processing system for document analysis and extraction',
-    image: '/project-screenshots/nlp-processor.png',
-    tags: ['Python', 'SpaCy', 'FastAPI', 'MongoDB', 'React', 'Tailwind CSS'],
-    link: 'https://nlp-document-processor.vercel.app/',
-  },
-  {
-    title: 'Blockchain Analytics Tool',
-    description: 'Real-time blockchain data analysis and visualization platform',
-    image: '/project-screenshots/blockchain-analytics-dashboard.jpeg',
-    tags: ['Python', 'GraphQL', 'Web3.js', 'PostgreSQL', 'React'],
-    link: 'https://blockchain-analytics-dashboard-iota.vercel.app/',
-  },
-  {
-    title: 'ML Model Analytics',
-    description: 'A real-time dashboard for monitoring and visualizing machine learning model performance metrics.',
-    image: '/project-screenshots/ml-metrics.jpeg',
-    tags: ['Python', 'Docker', 'Tensorflow', 'CI/CD', 'React'],
-    link: 'https://ml-model-analytics.vercel.app/',
-  },
-  {
-    title: 'ABAP Code Analyzer',
-    description: 'Analyze and improve your ABAP code quality with S/4HANA best practices',
-    image: '/project-screenshots/abap-code-analyzer.png',
-    tags: ['Python', 'PyTorch', 'React', 'AWS', 'TypeScript'],
-    link: 'https://abap-analyzer.vercel.app/',
-  },
-  {
-    title: 'IoT Data Platform',
-    description: 'Scalable platform for collecting, processing, and analyzing IoT sensor data',
-    image: '/project-screenshots/iot-data-platform.png',
-    tags: ['Go', 'MQTT', 'TimescaleDB', 'Grafana'],
-    link: '#',
-  },
-  {
-    title: 'Web3 ICO Platform',
-    description: 'Decentralized platform for launching and managing ICOs on the Ethereum blockchain',
-    image: '/project-screenshots/web3-ico-platform.png',
-    tags: ['Next.js', 'Solidity', 'ChartJS', 'Tailwind CSS'],
-    link: '#',
-  },
-  {
-    title: 'Quantum Algorithm Simulator',
-    description: 'Simulator for testing and visualizing quantum computing algorithms',
-    image: '/project-screenshots/quantum-simulator.png',
-    tags: ['Python', 'Qiskit', 'React', 'TypeScript'],
-    link: '#',
-  },
-  {
-    title: 'Weather Dashboard',
-    description: 'A beautiful and feature-rich weather dashboard application with detailed forecasts, beautiful visualizations, and comprehensive city details.',
-    image: '/project-screenshots/weather-dashboard.png',
-    tags: ['React', 'Zustand', 'Recharts', 'OpenWeather API', 'REST Countries API', 'Tailwind CSS'],
-    link: 'https://world-weather-app-lemon.vercel.app/',
-  },
-  {
-    title: 'Blockchain Edu Platform',
-    description: 'Educational platform for learning blockchain development and smart contract programming',
-    image: '/project-screenshots/blockchain-edu-platform.png',
-    tags: ['Python', 'TypeScript', 'FastAPI', 'React', 'Tailwind CSS', 'Web3.js'],
-    link: 'https://blockchain-edu.vercel.app/',
-  },
-];
+import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
+import { getProjects } from '@/lib/firebase/client-services';
+import type { Project } from '@/lib/types';
 
 const PROJECTS_PER_PAGE = 6;
 
 export function ProjectsGrid() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    getProjects()
+      .then(setProjects)
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
   const totalPages = Math.ceil(projects.length / PROJECTS_PER_PAGE);
-  
   const startIndex = (currentPage - 1) * PROJECTS_PER_PAGE;
-  const endIndex = startIndex + PROJECTS_PER_PAGE;
-  const currentProjects = projects.slice(startIndex, endIndex);
+  const currentProjects = projects.slice(startIndex, startIndex + PROJECTS_PER_PAGE);
+
+  if (loading) {
+    return (
+      <section className="py-20 px-4 flex justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 px-4">
@@ -138,7 +62,7 @@ export function ProjectsGrid() {
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
-            
+
             <div className="flex items-center gap-2">
               {[...Array(totalPages)].map((_, index) => (
                 <Button

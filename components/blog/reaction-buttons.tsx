@@ -1,50 +1,53 @@
 "use client";
 
-import { useState } from 'react';
-import { Heart, Bookmark, Share2 } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Heart, Bookmark, Share2, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { supabase } from '@/lib/supabase/client';
+import { rtdb } from '@/lib/firebase/client';
+import { ref, onValue, runTransaction, off } from 'firebase/database';
 import { toast } from 'sonner';
 
 interface ReactionButtonsProps {
   postId: string;
-  initialLikes: number;
-  initialBookmarks: number;
 }
 
-export function ReactionButtons({ postId, initialLikes, initialBookmarks }: ReactionButtonsProps) {
-  const [likes, setLikes] = useState(initialLikes);
-  const [bookmarks, setBookmarks] = useState(initialBookmarks);
+export function ReactionButtons({ postId }: ReactionButtonsProps) {
+  const [likes, setLikes] = useState(0);
+  const [bookmarks, setBookmarks] = useState(0);
+  const [views, setViews] = useState(0);
+  const [shares, setShares] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
 
-  const handleReaction = async (type: 'like' | 'bookmark') => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        toast.error('Please sign in to react to posts');
-        return;
-      }
+  const postRef = ref(rtdb, `reactions/${postId}`);
 
-      const { error } = await supabase.from('reactions').upsert({
-        post_id: postId,
-        user_id: user.id,
-        type,
-      });
+  useEffect(() => {
+    const unsubscribe = onValue(postRef, (snapshot) => {
+      const data = snapshot.val() || {};
+      setLikes(data.likes || 0);
+      setBookmarks(data.bookmarks || 0);
+      setViews(data.views || 0);
+      setShares(data.shares || 0);
+    });
 
-      if (error) throw error;
+    const viewsRef = ref(rtdb, `reactions/${postId}/views`);
+    runTransaction(viewsRef, (current) => (current || 0) + 1);
 
-      if (type === 'like') {
-        setLikes(prev => prev + (isLiked ? -1 : 1));
-        setIsLiked(!isLiked);
-      } else {
-        setBookmarks(prev => prev + (isBookmarked ? -1 : 1));
-        setIsBookmarked(!isBookmarked);
-      }
-    } catch (error) {
-      toast.error('Failed to update reaction');
-    }
+    return () => off(postRef, 'value', unsubscribe as unknown as (a: unknown) => unknown);
+  }, [postId]);
+
+  const handleLike = () => {
+    const likesRef = ref(rtdb, `reactions/${postId}/likes`);
+    const change = isLiked ? -1 : 1;
+    runTransaction(likesRef, (current) => Math.max(0, (current || 0) + change));
+    setIsLiked(!isLiked);
+  };
+
+  const handleBookmark = () => {
+    const bookmarksRef = ref(rtdb, `reactions/${postId}/bookmarks`);
+    const change = isBookmarked ? -1 : 1;
+    runTransaction(bookmarksRef, (current) => Math.max(0, (current || 0) + change));
+    setIsBookmarked(!isBookmarked);
   };
 
   const handleShare = async () => {
@@ -53,11 +56,8 @@ export function ReactionButtons({ postId, initialLikes, initialBookmarks }: Reac
         title: document.title,
         url: window.location.href,
       });
-
-      await supabase.from('shares').insert({
-        post_id: postId,
-        platform: 'native',
-      });
+      const sharesRef = ref(rtdb, `reactions/${postId}/shares`);
+      runTransaction(sharesRef, (current) => (current || 0) + 1);
     } catch (error) {
       if (error instanceof Error && error.name !== 'AbortError') {
         toast.error('Failed to share');
@@ -66,11 +66,11 @@ export function ReactionButtons({ postId, initialLikes, initialBookmarks }: Reac
   };
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex flex-wrap items-center gap-4">
       <Button
         variant="ghost"
         size="sm"
-        onClick={() => handleReaction('like')}
+        onClick={handleLike}
         className={isLiked ? 'text-red-500' : ''}
       >
         <Heart className="w-4 h-4 mr-2" />
@@ -80,21 +80,22 @@ export function ReactionButtons({ postId, initialLikes, initialBookmarks }: Reac
       <Button
         variant="ghost"
         size="sm"
-        onClick={() => handleReaction('bookmark')}
+        onClick={handleBookmark}
         className={isBookmarked ? 'text-blue-500' : ''}
       >
         <Bookmark className="w-4 h-4 mr-2" />
         {bookmarks}
       </Button>
 
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={handleShare}
-      >
+      <Button variant="ghost" size="sm" onClick={handleShare}>
         <Share2 className="w-4 h-4 mr-2" />
-        Share
+        {shares}
       </Button>
+
+      <div className="flex items-center text-sm text-muted-foreground gap-1">
+        <Eye className="w-4 h-4" />
+        {views} views
+      </div>
     </div>
   );
 }

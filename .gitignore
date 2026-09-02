@@ -28,9 +28,16 @@ yarn-error.log*
 .env*.local
 .env
 
+# firebase service account keys
+*-firebase-adminsdk.json
+
 # vercel
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# firebase
+firebase-debug.log
+iefosa-firebase-adminsdk.json

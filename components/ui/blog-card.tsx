@@ -4,12 +4,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
 import { motion } from 'framer-motion';
-import type { BlogPost } from '@/lib/blog-data';
+import type { Post } from '@/lib/types';
 
-export function BlogCard({ slug, title, excerpt, date, image, readTime, tags }: BlogPost) {
+export function BlogCard({ slug, title, excerpt, date, image, readTime, tags }: Post) {
   return (
     <Link href={`/blog/${slug}`}>
-      <motion.article 
+      <motion.article
         className="group h-full bg-card rounded-xl border overflow-hidden hover:shadow-lg transition-shadow"
         whileHover={{ y: -5 }}
         transition={{ duration: 0.2 }}
@@ -22,7 +22,7 @@ export function BlogCard({ slug, title, excerpt, date, image, readTime, tags }: 
             className="object-cover transition-transform group-hover:scale-105"
           />
         </div>
-        
+
         <div className="p-6 space-y-4">
           <div className="flex gap-2 flex-wrap">
             {tags.map(tag => (
@@ -38,7 +38,7 @@ export function BlogCard({ slug, title, excerpt, date, image, readTime, tags }: 
           <h3 className="text-xl font-semibold line-clamp-2 group-hover:text-primary transition-colors">
             {title}
           </h3>
-          
+
           <p className="text-muted-foreground line-clamp-3">
             {excerpt}
           </p>
