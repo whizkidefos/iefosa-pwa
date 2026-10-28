@@ -24,10 +24,10 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { Loader2, LogOut, Plus, Trash2, Pencil, Eye, EyeOff } from 'lucide-react';
+import { Loader2, LogOut, Plus, Trash2, Pencil, Eye, Reply } from 'lucide-react';
 import { toast } from 'sonner';
 import { format } from 'date-fns';
-import { Post, Project, Message } from '@/lib/types';
+import { Post, Project, Message, MailDoc } from '@/lib/types';
 import {
   getAdminPosts,
   createAdminPost,
@@ -40,8 +40,12 @@ import {
   getAdminMessages,
   markAdminMessageRead,
   deleteAdminMessage,
+  getAdminMail,
   uploadImage,
 } from '@/lib/firebase/admin-client-services';
+import { AnalyticsTab } from '@/components/admin/analytics-tab';
+import { MailLogTab } from '@/components/admin/mail-log-tab';
+import { ReplyDialog } from '@/components/admin/reply-dialog';
 import {
   BarChart,
   Bar,
@@ -81,6 +85,8 @@ export default function AdminPage() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [projects, setProjects] = useState<Project[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [mail, setMail] = useState<MailDoc[]>([]);
+  const [replyTarget, setReplyTarget] = useState<Message | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('blog');
 
@@ -99,14 +105,16 @@ export default function AdminPage() {
 
   const loadData = async () => {
     try {
-      const [p, pr, m] = await Promise.all([
+      const [p, pr, m, ml] = await Promise.all([
         getAdminPosts(),
         getAdminProjects(),
         getAdminMessages(),
+        getAdminMail(),
       ]);
       setPosts(p);
       setProjects(pr);
       setMessages(m);
+      setMail(ml);
     } catch (e) {
       toast.error('Failed to load admin data');
       console.error(e);
@@ -383,10 +391,16 @@ export default function AdminPage() {
 
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList>
+            <TabsTrigger value="analytics">Analytics</TabsTrigger>
             <TabsTrigger value="blog">Blog</TabsTrigger>
             <TabsTrigger value="projects">Projects</TabsTrigger>
             <TabsTrigger value="messages">Messages</TabsTrigger>
+            <TabsTrigger value="mail">Mail Log</TabsTrigger>
           </TabsList>
+
+          <TabsContent value="analytics">
+            <AnalyticsTab />
+          </TabsContent>
 
           <TabsContent value="blog" className="space-y-4">
             <div className="flex justify-end">
@@ -494,6 +508,15 @@ export default function AdminPage() {
                         {msg.createdAt ? format(new Date(msg.createdAt), 'MMM d, yyyy h:mm a') : '-'}
                       </TableCell>
                       <TableCell className="text-right space-x-2">
+                        {msg.replied && <Badge variant="outline">Replied</Badge>}
+                        <Button
+                          size="icon"
+                          variant="ghost"
+                          title="Reply"
+                          onClick={() => setReplyTarget(msg)}
+                        >
+                          <Reply className="h-4 w-4" />
+                        </Button>
                         {!msg.read && (
                           <Button size="icon" variant="ghost" onClick={() => markRead(msg.id!)}>
                             <Eye className="h-4 w-4" />
@@ -509,8 +532,20 @@ export default function AdminPage() {
               </Table>
             </Card>
           </TabsContent>
+          <TabsContent value="mail">
+            <MailLogTab mail={mail} />
+          </TabsContent>
         </Tabs>
       </div>
+
+      {replyTarget && (
+        <ReplyDialog
+          message={replyTarget}
+          open={!!replyTarget}
+          onOpenChange={(o) => !o && setReplyTarget(null)}
+          onSent={loadData}
+        />
+      )}
 
       {/* Post Dialog */}
       <Dialog open={postOpen} onOpenChange={setPostOpen}>

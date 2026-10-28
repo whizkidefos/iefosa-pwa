@@ -11,8 +11,16 @@ export default function Contact() {
   const handleSubmit = async (formData: FormData) => {
     setIsSubmitting(true);
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          message: formData.get('message'),
+        }),
+      });
+      if (!response.ok) throw new Error('Failed to send message');
       toast.success('Message sent successfully!');
     } catch (error) {
       toast.error('Failed to send message. Please try again.');

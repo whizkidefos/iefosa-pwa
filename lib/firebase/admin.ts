@@ -30,7 +30,17 @@ function loadServiceAccount(): Record<string, unknown> {
   );
 }
 
-const serviceAccount = loadServiceAccount();
+const raw = loadServiceAccount() as {
+  project_id?: string;
+  client_email?: string;
+  private_key?: string;
+};
+
+export const serviceAccount = {
+  projectId: raw.project_id,
+  clientEmail: raw.client_email,
+  privateKey: raw.private_key,
+};
 
 const app: App = getApps().length === 0
   ? initializeApp({ credential: cert(serviceAccount) })

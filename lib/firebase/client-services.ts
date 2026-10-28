@@ -4,15 +4,9 @@ import {
   where,
   orderBy,
   getDocs,
-  getDoc,
-  doc,
-  addDoc,
-  serverTimestamp,
-  updateDoc,
-  deleteDoc,
 } from 'firebase/firestore';
 import { db } from './client';
-import { Post, Project, Message } from '@/lib/types';
+import { Post, Project } from '@/lib/types';
 
 const postsCol = collection(db, 'posts');
 const projectsCol = collection(db, 'projects');
@@ -35,12 +29,4 @@ export async function getProjects(): Promise<Project[]> {
   const q = query(projectsCol, orderBy('order', 'asc'));
   const snap = await getDocs(q);
   return snap.docs.map((d) => ({ id: d.id, ...d.data() } as Project));
-}
-
-export async function submitContactMessage(data: Omit<Message, 'id' | 'createdAt' | 'read'>) {
-  return addDoc(collection(db, 'messages'), {
-    ...data,
-    read: false,
-    createdAt: serverTimestamp(),
-  });
 }

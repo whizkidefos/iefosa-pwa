@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "functions:install": "npm --prefix functions install",
+    "functions:build": "npm --prefix functions run build",
+    "deploy:firebase": "npm run functions:build && firebase deploy --only functions,firestore,storage,database"
   },
   "dependencies": {
     "@gsap/react": "^2.1.0",

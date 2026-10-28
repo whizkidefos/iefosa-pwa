@@ -5,6 +5,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Navigation from '@/components/navigation';
 import { Toaster } from '@/components/ui/sonner';
 import { ScrollIndicator } from '@/components/ui/scroll-indicator';
+import { AnalyticsTracker } from '@/components/analytics-tracker';
+import { Suspense } from 'react';
 
 import { Analytics } from "@vercel/analytics/react"
 
@@ -48,6 +50,9 @@ export default function RootLayout({
           <ScrollIndicator />
           <Navigation />
           {children}
+          <Suspense fallback={null}>
+            <AnalyticsTracker />
+          </Suspense>
           <Toaster />
         </ThemeProvider>
       </body>

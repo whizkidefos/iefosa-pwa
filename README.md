@@ -9,9 +9,10 @@ A modern, interactive portfolio website built with Next.js 14, Three.js, and Tai
 - 📱 Fully responsive design
 - ⚡ Server-side rendering with Next.js 14
 - 🔥 Fast page transitions and animations
-- 📝 Blog system with Supabase backend
+- 📝 Blog system backed by Cloud Firestore
 - 📊 Project showcase with pagination
-- 📫 Contact form with email integration
+- 📫 Contact form with automated email delivery via Cloud Functions
+- 📈 Admin analytics dashboard powered by the GA4 Data API
 - 🎯 SEO optimized with metadata
 - 🔒 Admin dashboard for content management
 
@@ -22,8 +23,8 @@ A modern, interactive portfolio website built with Next.js 14, Three.js, and Tai
 - **UI Components:** shadcn/ui
 - **3D Graphics:** Three.js, React Three Fiber
 - **Animations:** Framer Motion, GSAP
-- **Database:** Supabase
-- **Email:** Resend
+- **Backend:** Firebase (Firestore, Realtime Database, Storage, Auth, Cloud Functions)
+- **Email:** Nodemailer over SMTP, delivered by a self-managed Cloud Function (`functions/`)
 - **Icons:** Lucide React
 - **Form Handling:** React Hook Form, Zod
 - **State Management:** React Hooks
@@ -34,8 +35,8 @@ A modern, interactive portfolio website built with Next.js 14, Three.js, and Tai
 
 - Node.js 18+ 
 - npm or yarn
-- Supabase account
-- Resend account
+- Firebase project (Blaze plan for Cloud Functions)
+- Google Analytics 4 property linked to the Firebase project
 
 ### Installation
 
@@ -50,12 +51,17 @@ cd iefosa-pwa
 npm install
 ```
 
-3. Create a `.env` file in the root directory:
+3. Create a `.env` file in the root directory (see `.env.example` for all variables):
 ```env
-RESEND_API_KEY=your_resend_api_key_here
-CONTACT_EMAIL=your_email@example.com
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=
+FIREBASE_SERVICE_ACCOUNT_KEY_BASE64=
+GA4_PROPERTY_ID=
 ```
 
 4. Start the development server:

@@ -1,0 +1,17 @@
+{
+  "rules": {
+    "reactions": {
+      "$postId": {
+        ".read": true,
+        ".write": true,
+        ".validate": "newData.hasChildren(['likes', 'bookmarks', 'views', 'shares']) || newData.val() == null || newData.isNumber()",
+        "likes": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+        "bookmarks": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+        "views": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+        "shares": { ".validate": "newData.isNumber() && newData.val() >= 0" }
+      }
+    },
+    ".read": false,
+    ".write": false
+  }
+}

@@ -45,3 +45,30 @@ export interface AdminUser {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface MailDoc {
+  id?: string;
+  to?: string | string[];
+  cc?: string | string[];
+  bcc?: string | string[];
+  from?: string;
+  replyTo?: string;
+  message?: {
+    subject?: string;
+    text?: string;
+    html?: string;
+  };
+  createdAt?: string;
+  delivery?: {
+    state?: 'PENDING' | 'PROCESSING' | 'SUCCESS' | 'ERROR';
+    attempts?: number;
+    error?: string;
+    info?: {
+      messageId?: string;
+      accepted?: string[];
+      rejected?: string[];
+    };
+    startTime?: string;
+    endTime?: string;
+  };
+}
